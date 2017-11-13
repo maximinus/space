@@ -1,0 +1,43 @@
+
+Base on world
+
+Gathering: vist the rubbish dumps
+Has alien lifeforms
+Limited ouside because of oxygen requirements
+
+Have a limited area indoors
+
+Traders are the government, and will tax
+They are also unfair
+They can be bribed
+They can be blackmailed
+There is a black market
+
+NPC are generally political prisoners
+They take time to open up
+In the "real" world you are piss poor, so generally you don't have a lot to steal.
+Helping form a commuinity is a goal
+Escaping through wealth is another
+Overthrowing the overlords is another
+
+Wake Up
+
+Fishing: n/a
+Foraging: Gather from outside
+Raising animals: same idea
+Farming: same
+Cooking:
+Artisan:
+
+
+Code:
+
+You
+You can walk
+You can point
+You have restrictive ground
+There are other people
+They walk around
+You can speak to them
+There is an inventory
+You can change the world
