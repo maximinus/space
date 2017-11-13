@@ -1,2 +1,4 @@
-# space
-Space farming sim
+# Space Story
+
+Farming sim game inspired by stardew Valley
+
