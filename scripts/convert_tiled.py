@@ -33,19 +33,67 @@ def loadMapData(map_file):
     return map_data
 
 
-def renderMap(map_file):
-    map_data = loadMapData(map_file)
-    # now we need to load associated bitmap to render
-    tile_images = pygame.image.load(TILE_IMAGES)
-    # find the individual layers in the json data
+def getMapLayers(map_data):
     if 'layers' not in map_data:
         print('Error: There are no layers to render in {0}!'.format(map_file))
         sys.exit(False)
-    for layer in map_data['layers']:
-        print(layer['name'])
-    # render each to a surface
-    # merge the surfaces
-    # save this file
+    layers = map_data['layers']
+    # make sure they all have data
+    required = ['data', 'width', 'height', 'name']
+    for i in layers:
+        for j in layers:
+            if j not in i:
+                print('Error: Missing layer info {0} in layer'.format(j))
+                sys.exit(False)
+    return layers
+
+
+class ItemSize:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    @property
+    def size(self):
+        return self.x * self.y
+
+
+def getSize(data):
+    # data could be a layer or the map
+    try:
+        width = data['width']
+        height = data['height']
+    except KeyError as e:
+        print('Error: Missing data in map data: {0}'.format(e))
+        sys.exit(False)
+    return ItemSize(width, height)
+
+
+def renderMap(map_file):
+    map_data = loadMapData(map_file)
+    # now we need to load associated bitmap to render
+    #tile_images = pygame.image.load(TILE_IMAGES)
+    # find the individual layers in the json data
+
+    layers = getMapLayers(map_data)
+    map_size = getMapSize(map_data)
+    render_layers = []
+    for layer in layers:
+        # render each to a surface
+        try:
+            length = layer['width'] * layer['height']
+            data = layer['data']
+            name = layer['name']
+        except KeyError as e:
+            print('Map data is missing elements: {0}'.format(e))
+            sys.exit(0)
+        render_surface = pygame.Surface((xsize, ysize))
+        if len(data) != length:
+            print('Error: data length different from map size in layer {0}.'.format('name'))
+            sys.exit(0)
+        for tile_value in data:
+            # find this tile
+            # blit it with full alpha
 
 
 def showMapInfo():
