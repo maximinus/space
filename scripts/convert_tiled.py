@@ -19,7 +19,7 @@ def showMapInfo():
     print('Map info')
 
 
-def parseOptions():
+def setParseOptions():
     parser = argparse.ArgumentParser(description='Converter for Tiled json maps')
 
     render_help = 'Render the given map to a single image'
@@ -27,14 +27,15 @@ def parseOptions():
     info_help = 'Show map statistics'
     parser.add_argument('-i', '--info', metavar='map', help=info_help)
 
-    return parser.parse_args()
+    return parser
 
 
 if __name__ == '__main__':
-    options = parseOptions()
+    parser = setParseOptions()
+    options = parser.parse_args()
 
     if options.render:
-        # Show details for a specific interface
+        # render the given map
         renderMap()
     elif options.info:
         showMapInfo()
@@ -42,4 +43,3 @@ if __name__ == '__main__':
     if len(sys.argv) == 1:
         # no arguments were passes
         parser.print_help()
-        sys.exit(False)
